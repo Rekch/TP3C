@@ -3,13 +3,11 @@
 ## Description
 
 Description du projet en quelques phrases.
-Mentionner le contexte (cours, sigle, université, etc.).
+projet remis dans le cadre du cours INF3135 à  l'automne 2017
 
 ## Auteurs
 
-- Prénom et nom (Code permanent)
-- Prénom et nom (Code permanent)
-- Prénom et nom (Code permanent)
+- Lukas de VIPART (DEVL17109700)
 
 ## Fonctionnement
 
@@ -41,15 +39,10 @@ Donnez ici une liste des tâches de chacun des membres de l'équipe. Utilisez
 la syntaxe suivante (les crochets vides indiques que la tâche n'est pas
 complétée, les crochets avec un `X` indique que la tâche est complétée):
 
-- [ ] Programmation du menu principal (Alice)
-- [X] Conception des plateformes (Charlie)
-- [ ] Gestion des collisions (Charlie)
-- [ ] Gestion des feuilles de sprites (Alice)
-- [ ] Ajout de sons (Charlie)
-
-  - [ ] lorsque le personnage saute;
-  - [ ] lorsque le personnage atterrit;
-  - [X] lorsque le personnage prend un beigne;
+- [ ] Programmation du menu principal 
+- [ ] Conception des plateformes 
+- [ ] Gestion des collisions 
+- [ ] Gestion des feuilles de sprites 
 
 ## Statut
 
