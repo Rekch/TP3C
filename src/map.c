@@ -114,7 +114,7 @@ void updateDonut(GameState *game)
 }
 
 
-void SetStageNum(GameState *game, int stageNum)
+void setStageNum(GameState *game, int stageNum)
 {
   game->stageNum = stageNum;
 }

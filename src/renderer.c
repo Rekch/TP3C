@@ -72,7 +72,7 @@ if(state[SDL_SCANCODE_UP] && (game->player.onLedge))
 
 
   if(game->player.playerDonut == game->nbDonuts ){
-    done = 2;
+    done = 1;
   }
 
   if( game->player.x > SCREEN_WIDTH || game->player.x < 0 
@@ -202,7 +202,7 @@ void initSDL(GameState *gameState){
 void gameLoop(GameState *gameState, int levelMAX)
 {
   
-  SetStageNum(gameState,1);
+  setStageNum(gameState,1);
   loadGame(gameState);
 
   int done;
