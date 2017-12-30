@@ -3,41 +3,95 @@
  
 #include "defs.h"
  
-/* Structures qui seront utilisées pour gérer le jeu */
- 
-// Structure pour gérer l'input
-typedef struct Input
+
+/**
+@struct Player
+@brief Player: Structure du joueur contenant ses positions, ses status,compteur de beignes ainsi que les frames.
+
+*/
+typedef struct
 {
- 
-    int left, right, jump, jump_left, jump_right, enter, erase, pause;
- 
-} Input;
+  float x, y, w, h;
+  float dx, dy;
 
-// Structure pour gérer la map à afficher (à compléter plus tard)
-typedef struct Map
+  int onLedge;
+
+  int animFrame;
+  
+
+  int facingLeft;
+  int slowingDown;
+
+  int walking;
+  int jumping;
+
+  int playerDonut;
+
+
+} Player;
+
+typedef struct
 {
- 
-    SDL_Texture *background;
-    SDL_Texture *tileSet, *tileSetB;
- 
-    int tilesetAffiche;
- 
-    int beginx, beginy;
- 
-    int startX, startY;
- 
-    int maxX, maxY;
- 
-    int tile[MAX_MAP_Y][MAX_MAP_X];
- 
-    int tile2[MAX_MAP_Y][MAX_MAP_X];
- 
-    int tile3[MAX_MAP_Y][MAX_MAP_X];
- 
-    int mapTimer, tileSetNumber;
- 
-} Map;
+  float x, y, w, h;
+  int ledgeType;
+} Ledge;
+
+typedef struct
+{
+  float x, y, w, h;
+  int display;
+  int animFrame;
+} Donut;
+
+/**
+ @fn  int Ledge_getX (Ledge * l);
+ @brief game_getLedgeX:Accesseur à une structure legde
+ @param [in, out] l pointeur sur ledge
+ @return int
+ */
+
+int Ledge_getX (Ledge * l);
+
+typedef struct
+{
+  int stageNum;
+
+	//MAP
+
+	float mapGravity;
+	float mapDimX;
+	float mapDimY;
+
+  //Players
+  Player player;
+
+  //Ledges
+  Ledge *ledges;
+  int nbLedges;
 
 
- 
+  //Donut
+  Donut *donuts;
+  int nbDonuts;
+
+
+  //Images
+
+  SDL_Texture *sheetTexture;
+  SDL_Texture *playerTexture;
+  SDL_Texture *donutTexture; 
+  SDL_Texture *backgroundTexture;
+
+
+  int time;
+
+  //Renderer
+  SDL_Renderer *renderer;
+  SDL_Window *window;                    // Declare une fenetre
+
+} GameState;
+
+
+
 #endif
+ 

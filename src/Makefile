@@ -1,17 +1,17 @@
 CC = gcc
-CFLAGS = -g -std=c11 -W -Wall ${SDL}
+CFLAGS = `sdl2-config --libs --cflags` -O0 --std=c11 -Wall -lSDL2_image -lSDL2_ttf -lm
+LFLAGS = `sdl2-config --libs --cflags` -lSDL2_image -lSDL2_ttf -lm
 EXEC = tp3
-SDL = -lSDLmain -lSDL -lSDL_image -lSDL_ttf
-AUXI_IMPL = $(filter-out $(EXEC).c,$(wildcard *.c))
+AUXI_IMPL = $(filter-out  $(EXEC).c,$(wildcard *.c))
 AUXI_OBJS = $(patsubst %.c,%.o,$(AUXI_IMPL))
 
 $(EXEC): $(AUXI_OBJS) $(EXEC).o
-	$(CC) $(EXEC).o $(AUXI_OBJS) -o $(EXEC)
+	$(CC) $(EXEC).o $(AUXI_OBJS) $(LFLAGS) -o $(EXEC)
 
 %.o: %.c %.h
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-.PHONY: clean 
+.PHONY: clean test
 
 clean:
 	rm -f *.o

@@ -3,7 +3,7 @@ BIN_DIR = bin
 EXEC = tp3
 
 exec: source bindir
-	cp $(SRC_DIR)/tp2 $(BIN_DIR)
+	cp $(SRC_DIR)/tp3 $(BIN_DIR)
 
 bindir:
 	mkdir -p $(BIN_DIR)
