@@ -157,6 +157,7 @@ void loadGame(GameState *game)
   char levelPath[20];
   sprintf(levelPath,"levels/level%d",game->stageNum);
 
+
   loadMap(levelPath,game);
 }
 

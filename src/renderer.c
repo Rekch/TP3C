@@ -24,7 +24,9 @@ int processEvents(GameState *game){
           switch(event.key.keysym.sym)
           {
             case SDLK_ESCAPE:
-              exit(0);
+                SDL_DestroyWindow(game->window);
+                game->window = NULL;
+                exit(0);
               break;
           }
         }
@@ -73,6 +75,10 @@ if(state[SDL_SCANCODE_UP] && (game->player.onLedge))
 
   if(game->player.playerDonut == game->nbDonuts ){
     done = 1;
+    SDL_DestroyTexture(game->sheetTexture);
+    SDL_DestroyTexture(game->donutTexture);
+    SDL_DestroyTexture(game->playerTexture);
+    setLevelBackground(game, "assets/victoire.jpg");
   }
 
   if( game->player.x > SCREEN_WIDTH || game->player.x < 0 
@@ -203,7 +209,14 @@ void gameLoop(GameState *gameState, int levelMAX)
 {
   
   setStageNum(gameState,1);
+
+    int go = 0;
+    setLevelBackground(gameState, "assets/menu.png");
+    while(!go)
+        go=initMenu(gameState);
+
   loadGame(gameState);
+  
 
   int done;
   
@@ -222,27 +235,33 @@ void gameLoop(GameState *gameState, int levelMAX)
 
       doRender(gameState);
     }
+     
 
-    if(done == 1) {  
-        printf("Vous avez gagné!\n");
-        break;    
+    if(done == 1) {         
+        while(done) 
+        victory(gameState);
+        break;
+            
     }
-    destroyLevel(gameState);
-    loadGame(gameState);
+   destroyLevel(gameState);
+   loadGame(gameState);
   }
 }
 
 void destroyLevel(GameState *gameState){
 
+
+    free(gameState->ledges);
+    free(gameState->donuts);
+
+
+    SDL_DestroyTexture(gameState->sheetTexture);
+    SDL_DestroyTexture(gameState->donutTexture);
+    SDL_DestroyTexture(gameState->playerTexture);
+    SDL_DestroyTexture(gameState->backgroundTexture);
+        
  
-  free(gameState->ledges);
-  free(gameState->donuts);
 
-
-  SDL_DestroyTexture(gameState->sheetTexture);
-  SDL_DestroyTexture(gameState->donutTexture);
-  SDL_DestroyTexture(gameState->playerTexture);
-  SDL_DestroyTexture(gameState->backgroundTexture);
 }
 
 void destroySDL(GameState *gameState){
