@@ -24,7 +24,9 @@ int processEvents(GameState *game){
           switch(event.key.keysym.sym)
           {
             case SDLK_ESCAPE:
-              exit(0);
+                SDL_DestroyWindow(game->window);
+                game->window = NULL;
+                exit(0);
               break;
           }
         }
@@ -207,7 +209,14 @@ void gameLoop(GameState *gameState, int levelMAX)
 {
   
   setStageNum(gameState,1);
+
+    int go = 0;
+    setLevelBackground(gameState, "assets/menu.png");
+    while(!go)
+        go=initMenu(gameState);
+
   loadGame(gameState);
+  
 
   int done;
   

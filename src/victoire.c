@@ -23,7 +23,14 @@ void victory(GameState *game){
           switch(event.key.keysym.sym)
           {
             case SDLK_ESCAPE:
-              exit(0);
+              SDL_DestroyWindow(game->window);
+                game->window = NULL;
+                exit(0);
+              break;
+             case SDLK_RETURN:
+              SDL_DestroyWindow(game->window);
+                game->window = NULL;
+                exit(0);
               break;
           }
         }

@@ -4,7 +4,7 @@
 #include "structs.h"
 
 
-extern void initMenu(GameState *game,int choice);
+extern int initMenu(GameState *game);
 extern void victory(GameState *game);
 
 /**

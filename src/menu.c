@@ -1,11 +1,27 @@
 #include "prototypes.h"
 
-void initMenu(GameState *game,int choice){
-    setLevelBackground(game, "assets/background.png");
+int initMenu(GameState *game){
+   /* SDL_Surface *jouer = NULL;
+    SDL_Rect posJouer; 
     
+    jouer=IMG_Load("assets/jouer.png");
+    posJouer.x=640;
+    posJouer.y=360;
+*/
+  SDL_SetRenderDrawColor(game->renderer, 128, 128, 255, 255);
+
+  
+  SDL_RenderClear(game->renderer);
+
+  
+  SDL_SetRenderDrawColor(game->renderer, 255, 255, 255, 255);
+
+  SDL_RenderCopy(game->renderer, game->backgroundTexture, NULL, NULL);
+
+  SDL_RenderPresent(game->renderer);
 
     SDL_Event event;
-
+    int go;
   while(SDL_PollEvent(&event))
   {
     switch(event.type)
@@ -27,8 +43,8 @@ void initMenu(GameState *game,int choice){
             case SDLK_ESCAPE:
               exit(0);
               break;
-            case SDLK_UP:
-              choice=1;
+            case SDLK_RETURN:
+              go=1;
               break;
           }
         }
@@ -38,5 +54,8 @@ void initMenu(GameState *game,int choice){
         break;
     }
   }
+return  go;
 
 }
+
+ 
