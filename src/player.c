@@ -35,10 +35,10 @@ void collisionDetect(GameState *game)
   }
  
 
-  //verifie collision avec Ledges
+  
   for(int i = 0; i < game->nbLedges; i++)
   {
-    float bx = game_getLedgeX(game,i), by = game->ledges[i].y, bw = game->ledges[i].w, bh = game->ledges[i].h; //game_getLedgeX(game,i)
+    float bx = game_getLedgeX(game,i), by = game->ledges[i].y, bw = game->ledges[i].w, bh = game->ledges[i].h; 
 
 
    
@@ -83,7 +83,7 @@ void collisionDetect(GameState *game)
         }
       }
     
-  }//for
+  }
 }
 
 

@@ -3,9 +3,7 @@
 int** createArray(int m, int n)
 {
   int* values = calloc(m*n, sizeof(int));
-  //assert(values != NULL);
   int** rows = malloc(n*sizeof(int*));
-  //assert(rows != NULL);
   for (int i=0; i<n; ++i)
   {
     rows[i] = values + i*m;

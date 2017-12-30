@@ -35,7 +35,7 @@ extern void loadMap(char *name, GameState *game);
 extern void loadGame(GameState *game);
 extern void process(GameState *game);
 extern void collisionDetect(GameState *game);
-extern void updateManPosition(GameState *game);
+extern void updatePlayerPosition(GameState *game);
 extern void setLevelBackground(GameState *game, char* bgImagePath);
 extern int processEvents(GameState *game);
 extern void doRender(GameState *game);
@@ -45,7 +45,7 @@ extern void destroyLevel(GameState *gameState);
 extern void destroySDL(GameState *gameState);
 extern void doRenderDonut(GameState *game);
 extern void doRenderLedges(GameState *game);
-extern void doRenderMan(GameState *game);
+extern void doRenderPlayer(GameState *game);
 extern void initPlayerLevel(Player *player);
 
 #endif

@@ -126,14 +126,14 @@ void doRenderPlayer(GameState *game)
     SDL_Rect rect_player = { game->player.x, game->player.y, game->player.w, game->player.h};
     SDL_RenderCopyEx(game->renderer, game->playerTexture,&srcRect_player, &rect_player, 0, NULL, 0  );
   }
-  else if(game->player.slowingDown && !game->player.onLedge) // saut idle
+  else if(game->player.slowingDown && !game->player.onLedge) 
   {
     SDL_Rect srcRect_player = { game->player.animFrame*game->player.w, 384, game->player.w, game->player.h };
     SDL_Rect rect_player = { game->player.x, game->player.y, game->player.w, game->player.h };
     SDL_RenderCopyEx(game->renderer, game->playerTexture,
         &srcRect_player, &rect_player, 0, NULL, 0 );
   }
-  else if(!game->player.slowingDown && !game->player.onLedge && !game->player.facingLeft) // saut droit
+  else if(!game->player.slowingDown && !game->player.onLedge && !game->player.facingLeft) 
   {
     SDL_Rect srcRect_player = { game->player.animFrame*game->player.w, 512, game->player.w, game->player.h };
     SDL_Rect rect_player = { game->player.x, game->player.y, game->player.w, game->player.h };
@@ -146,7 +146,7 @@ void doRenderPlayer(GameState *game)
     SDL_Rect rect_player = { game->player.x, game->player.y, game->player.w, game->player.h};
     SDL_RenderCopyEx(game->renderer, game->playerTexture,&srcRect_player, &rect_player, 0, NULL, 0  );
   }
-    else if(!game->player.slowingDown && !game->player.onLedge && game->player.facingLeft) // saut gauche
+    else if(!game->player.slowingDown && !game->player.onLedge && game->player.facingLeft) 
   {
     SDL_Rect srcRect_player = { game->player.animFrame*game->player.w, 640, game->player.w, game->player.h };
     SDL_Rect rect_player = { game->player.x, game->player.y, game->player.w, game->player.h };
@@ -158,13 +158,13 @@ void doRenderPlayer(GameState *game)
 
 void doRender(GameState *game)
 {
-  //couleur -> bleu
+  
   SDL_SetRenderDrawColor(game->renderer, 128, 128, 255, 255);
 
-  //clear l'écran (bleu)
+  
   SDL_RenderClear(game->renderer);
 
-  //couleur -> blanc
+  
   SDL_SetRenderDrawColor(game->renderer, 255, 255, 255, 255);
 
   SDL_RenderCopy(game->renderer, game->backgroundTexture, NULL, NULL);
@@ -175,24 +175,24 @@ void doRender(GameState *game)
   doRenderPlayer(game);
 
 
-  //affiche à l'écran ce qui a été généré
+  
   SDL_RenderPresent(game->renderer);
 }
 
 void initSDL(GameState *gameState){
 
-  SDL_Window *window = NULL;                    // Declare une fenetre
-  SDL_Renderer *renderer = NULL;                // Declare renderer
+  SDL_Window *window = NULL;                    
+  SDL_Renderer *renderer = NULL;                
 
-  SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);              // Initialise SDL2
+  SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);              
 
-  //crée une fenêtre avec config suivante
-  window = SDL_CreateWindow("Game Window",                     // window title
-      SDL_WINDOWPOS_UNDEFINED,           // initial x position
-      SDL_WINDOWPOS_UNDEFINED,           // initial y position
-      SCREEN_WIDTH,                               // width, en pixels
-      SCREEN_HEIGHT,                               // height, en pixels
-      0                                  // flags
+  
+  window = SDL_CreateWindow("Le ramasseur de donut",                     
+      SDL_WINDOWPOS_UNDEFINED,           
+      SDL_WINDOWPOS_UNDEFINED,           
+      SCREEN_WIDTH,                               
+      SCREEN_HEIGHT,                               
+      0                                  
       );
   renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
   gameState->window = window;
@@ -201,35 +201,30 @@ void initSDL(GameState *gameState){
 
 void gameLoop(GameState *gameState, int levelMAX)
 {
-  // fenetre ouverte: entre dans la boucle du jeu ( SDL_PollEvent)
+  
   SetStageNum(gameState,1);
   loadGame(gameState);
 
-  /** 
-   * 0 = playing current level
-   * 1 = won current level
-   */
   int done;
   
   while(gameState->stageNum <= levelMAX)
   {
     done = 0;
-    //boucle evenement
+    
     while(!done)
     {
-      //check evenements
+      
       collisionDetect(gameState);
 
       done = processEvents(gameState);
 
       process(gameState);
 
-      //Render display
       doRender(gameState);
     }
 
     if(done == 1) {  
-        printf("You Won\n");
+        printf("Vous avez gagné!\n");
         break;    
     }
     destroyLevel(gameState);
@@ -239,13 +234,11 @@ void gameLoop(GameState *gameState, int levelMAX)
 
 void destroyLevel(GameState *gameState){
 
-  //Shutdown game and unload all memory
+ 
   free(gameState->ledges);
   free(gameState->donuts);
 
 
-
-  //SDL_DestroyTexture(gameState.star);
   SDL_DestroyTexture(gameState->sheetTexture);
   SDL_DestroyTexture(gameState->donutTexture);
   SDL_DestroyTexture(gameState->playerTexture);
@@ -255,10 +248,10 @@ void destroyLevel(GameState *gameState){
 void destroySDL(GameState *gameState){
 
 
-  // fermeture fenetre
+  
   SDL_DestroyWindow(gameState->window);
   SDL_DestroyRenderer(gameState->renderer);
 
-  // termine prog
+  
   SDL_Quit();
 }
