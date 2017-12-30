@@ -33,6 +33,10 @@ Vous avez 10 colonnes et 6 lignes.
 2: un donut
 ~~~
 
+exemple de map:
+
+![](screen/screen.jpg)
+
 Pensez à nommer votre fichier level1.txt puisque le changement de niveau est désactivé. 
 
 
@@ -61,7 +65,8 @@ $ bin/tp3
 
 ## Références
 
-Pour ce programme je me suis inspiré du tutoriel de meruvia.net sur la création d'un jeu en SDL2 pour la gestion des fichiers. 
+Pour ce programme je me suis inspiré du tutoriel de meruvia.net sur la création d'un jeu en SDL2 pour la gestion des fichiers.
+>http://www.meruvia.net/index.php/big-tuto-sdl-2-nouveau 
 Le tutoriel de CS50 sur le SDL2 ainsi que de nombreux autres programmes et tutoriel majoritairement sur youtube et github.
 >https://www.youtube.com/watch?v=yFLa3ln16w0
 
