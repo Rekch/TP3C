@@ -67,6 +67,7 @@ $ bin/tp3
 
 Pour ce programme je me suis inspiré du tutoriel de meruvia.net sur la création d'un jeu en SDL2 pour la gestion des fichiers.
 >http://www.meruvia.net/index.php/big-tuto-sdl-2-nouveau 
+
 Le tutoriel de CS50 sur le SDL2 ainsi que de nombreux autres programmes et tutoriel majoritairement sur youtube et github.
 >https://www.youtube.com/watch?v=yFLa3ln16w0
 
